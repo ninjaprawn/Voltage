@@ -1,7 +1,7 @@
 Package: com.ninjaprawn.voltage
 Name: Voltage
 Depends: mobilesubstrate
-Version: 1.0
+Version: 1.1
 Architecture: iphoneos-arm
 Description: View the volume percentage
 Maintainer: Ninjaprawn
