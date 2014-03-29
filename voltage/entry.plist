@@ -1,0 +1,10 @@
+{
+    entry = {
+	bundle = Voltage;
+	cell = PSLinkCell;
+	detail = VoltageListController;
+	icon = Voltage.png;
+	isController = 1;
+	label = Voltage;
+    };
+}
