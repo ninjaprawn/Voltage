@@ -16,6 +16,7 @@
 
 - (void)save {
     [self.view endEditing:YES];
+    CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR(), NULL, nil, YES);
 }
 
 @end

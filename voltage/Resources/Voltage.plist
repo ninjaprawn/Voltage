@@ -17,8 +17,10 @@
 			<true/>
 			<key>defaults</key>
 			<string>com.ninjaprawn.voltage</string>
+			<key>PostNotification</key>
+			<string>com.ninjaprawn.voltage/preferencechanged</string>
 			<key>key</key>
-			<string>enabled</string>
+			<string>Enabled</string>
 			<key>label</key>
 			<string>Enabled</string>
 		</dict>
@@ -39,7 +41,7 @@ Leave blank for default format.</string>
 			<key>defaults</key>
 			<string>com.ninjaprawn.voltage</string>
 			<key>key</key>
-			<string>format</string>
+			<string>Format</string>
 			<key>label</key>
 			<string>Format</string>
 		</dict>
@@ -48,6 +50,8 @@ Leave blank for default format.</string>
 			<string>save</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
+			<key>PostNotification</key>
+			<string>com.ninjaprawn.voltage/preferencechanged</string>
 			<key>label</key>
 			<string>Save</string>
 		</dict>
