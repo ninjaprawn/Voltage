@@ -1,3 +1,4 @@
+//Import header
 #import "Voltage.h"
 
 //Variables
@@ -7,6 +8,7 @@ NSString *format = @"Volume: %@%%";
 float cv;
 NSDictionary* prefs;
 
+//Reload the preferance variables
 void reloadPrefs() {
 	prefs = [[NSDictionary alloc] initWithContentsOfFile:kSettingsPath];
 	enabled = !prefs[@"Enabled"] ? YES : [prefs[@"Enabled"] boolValue];
@@ -19,11 +21,13 @@ void reloadPrefs() {
 //Hook onto the setTitle method:
 -(void)setTitle:(id)arg1 {
     if (enabled) {
-        //Set to default format if blank
+        //Set to default format if blank, default or nil
         if ([format isEqualToString:@""] || format == nil || [format isEqualToString:@"Volume: %@%%"]) {
             format = @"Volume: %@%%";
         } else {
+        	//Temp string cause direct formating crashes SB 
         	NSString *tempFormat;
+        	//See if substring is in string. If is, change it
         	if ([format rangeOfString:@"%%%"].location != NSNotFound)
         		tempFormat = [format stringByReplacingOccurrencesOfString:@"%%%" withString:@"%@%\%"];
         	if ([format rangeOfString:@"%%"].location != NSNotFound)
@@ -32,6 +36,7 @@ void reloadPrefs() {
         		tempFormat = [tempFormat stringByReplacingOccurrencesOfString:@"%\%" withString:@"%%"];
         	format = tempFormat;
         }
+        //Float to string
         NSString *cvs = [NSString stringWithFormat:@"%2.0f", cv];
         //Apply progress with format
         progress = [NSString stringWithFormat:format, cvs];
@@ -55,7 +60,9 @@ void reloadPrefs() {
 %end
 
 %ctor {
+	//Reloads the prefs
 	reloadPrefs();
+	//NC Observer for reloading in settings
 	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL,
         (CFNotificationCallback)reloadPrefs,
         CFSTR("com.ninjaprawn.voltage/preferencechanged"),
